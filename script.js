@@ -273,7 +273,7 @@ function update() {
                     for (const spikeX of spikePositionsX) {
                         if (playerA.x + playerA.width > spikeX && 
                             playerA.x < spikeX + spikeBaseWidth) {
-                            showMessage("Ouch! Spikes!");
+                            showMessage("Você pisou nos espinhos! Cuidado!");
                             gameActive = false;
                             break;
                         }
@@ -511,25 +511,49 @@ function handleDpadRelease(direction) {
     }
 }
 
-dpadUp.addEventListener('touchstart', (e) => { e.preventDefault(); handleDpadPress('up'); }, { passive: false });
+// Corrigindo os event listeners do DPAD
+dpadUp.addEventListener('touchstart', (e) => { 
+    e.preventDefault(); 
+    handleDpadPress('up'); 
+}, { passive: false });
 
-dpadDown.addEventListener('touchstart', (e) => { e.preventDefault(); keys.ArrowDown = true; }, { passive: false });
-dpadDown.addEventListener('touchend', (e) => { e.preventDefault(); keys.ArrowDown = false; });
-dpadDown.addEventListener('mousedown', () => { keys.ArrowDown = true; });
-dpadDown.addEventListener('mouseup', () => { keys.ArrowDown = false; });
-dpadDown.addEventListener('mouseleave', () => { keys.ArrowDown = false; });
+dpadUp.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    handleDpadRelease('up');
+}, { passive: false });
 
-dpadLeft.addEventListener('touchstart', (e) => { e.preventDefault(); keys.ArrowLeft = true; }, { passive: false });
-dpadLeft.addEventListener('touchend', (e) => { e.preventDefault(); keys.ArrowLeft = false; });
-dpadLeft.addEventListener('mousedown', () => { keys.ArrowLeft = true; });
-dpadLeft.addEventListener('mouseup', () => { keys.ArrowLeft = false; });
-dpadLeft.addEventListener('mouseleave', () => { keys.ArrowLeft = false; });
+dpadLeft.addEventListener('touchstart', (e) => { 
+    e.preventDefault(); 
+    handleDpadPress('left'); 
+}, { passive: false });
 
-dpadRight.addEventListener('touchstart', (e) => { e.preventDefault(); keys.ArrowRight = true; }, { passive: false });
-dpadRight.addEventListener('touchend', (e) => { e.preventDefault(); keys.ArrowRight = false; });
-dpadRight.addEventListener('mousedown', () => { keys.ArrowRight = true; });
-dpadRight.addEventListener('mouseup', () => { keys.ArrowRight = false; });
-dpadRight.addEventListener('mouseleave', () => { keys.ArrowRight = false; });
+dpadLeft.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    handleDpadRelease('left');
+}, { passive: false });
+
+dpadRight.addEventListener('touchstart', (e) => { 
+    e.preventDefault(); 
+    handleDpadPress('right'); 
+}, { passive: false });
+
+dpadRight.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    handleDpadRelease('right');
+}, { passive: false });
+
+// Mouse controls for DPAD
+dpadUp.addEventListener('mousedown', () => handleDpadPress('up'));
+dpadUp.addEventListener('mouseup', () => handleDpadRelease('up'));
+dpadUp.addEventListener('mouseleave', () => handleDpadRelease('up'));
+
+dpadLeft.addEventListener('mousedown', () => handleDpadPress('left'));
+dpadLeft.addEventListener('mouseup', () => handleDpadRelease('left'));
+dpadLeft.addEventListener('mouseleave', () => handleDpadRelease('left'));
+
+dpadRight.addEventListener('mousedown', () => handleDpadPress('right'));
+dpadRight.addEventListener('mouseup', () => handleDpadRelease('right'));
+dpadRight.addEventListener('mouseleave', () => handleDpadRelease('right'));
 
 const shootButton = document.getElementById('shoot-button');
 shootButton.addEventListener('click', () => {
