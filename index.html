@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Te amo Giovanna!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="game-container">
+        <h1 class="text-2xl mb-4 text-center">Nosso amor, versão 2</h1>
+        <canvas id="gameCanvas"></canvas>
+        <div id="messageBox" class="message-box">
+            <span id="messageText"></span>
+            <button id="closeMessage" class="mt-4 px-4 py-2 bg-pink-500 hover:bg-pink-600 text-white rounded-md text-sm">Fechar</button>
+        </div>
+        <div id="easterEggBox" class="easter-egg-box">
+            <span id="easterEggText"></span>
+        </div>
+        <div class="controls">
+            Alcance o quadrado roxo quebrando a caixa ao redor dele!<p></p>
+            Use as setas ou WASD para mover, e SPACE para atirar. No celular, use os botões abaixo:
+        </div>
+        <div class="controls-row">
+            <div id="dpad-container" class="dpad-container">
+                <button id="dpad-up" class="dpad-button dpad-up">&#9650;</button>
+                <div class="dpad-center-row">
+                    <button id="dpad-left" class="dpad-button dpad-left">&#9664;</button>
+                    <button id="dpad-right" class="dpad-button dpad-right">&#9654;</button>
+                </div>
+                <button id="dpad-down" class="dpad-button dpad-down">&#9660;</button>
+            </div>
+            <button id="shoot-button" class="shoot-button">❤</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
